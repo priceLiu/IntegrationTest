@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IntegrationTest.Collect">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAQAAAAAAAAQAIAAgAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Collect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntegrationTest.SecondCounter">
+    <Position X="5.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>SecondCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntegrationTest.TestCase">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABoAAAAAAAACABIAAIAABAAAgIAAAAEQIEAgiBAAEKg=</HashCode>
+      <FileName>TestCase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntegrationTest.InvokeHandler">
+    <Position X="4" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Class Name="IntegrationTest.InvokeHandler.InvokeItem" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TestCase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAACBQIAAAAAAAABAAAAAAAAAAAAABAQAA=</HashCode>
+      <FileName>TestCase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntegrationTest.TestItem">
+    <Position X="2.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIAAAAAQAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TestItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>
