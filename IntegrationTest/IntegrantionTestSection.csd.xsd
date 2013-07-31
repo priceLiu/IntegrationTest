@@ -25,6 +25,11 @@
 					<xs:documentation>The Counters.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element minOccurs="0" name="params" type="tns:IntegrationTest.ParamCollectionCT">
+				<xs:annotation>
+					<xs:documentation>The Params.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:choice>
 		<xs:attribute name="sleep" use="required" type="xs:int">
 			<xs:annotation>
@@ -56,6 +61,11 @@
 				<xs:documentation>The Units.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="name" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="IntegrationTest.TestCaseConfCollectionCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -69,9 +79,9 @@
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="IntegrationTest.TestCaseConfCollectionRemoveCT">
-		<xs:attribute name="type" use="required" type="xs:string">
+		<xs:attribute name="name" use="required" type="xs:string">
 			<xs:annotation>
-				<xs:documentation>The Type.</xs:documentation>
+				<xs:documentation>The Name.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
@@ -117,4 +127,25 @@
 		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="IntegrationTest.TestCounterConfCollectionClearCT" />
+	<xs:complexType name="IntegrationTest.ParamCollectionCT">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="param" type="tns:IntegrationTest.ParamCT">
+				<xs:annotation>
+					<xs:documentation>The Param Configuration Element.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="IntegrationTest.ParamCT">
+		<xs:attribute name="name" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Name.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="value" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Value.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
 </xs:schema>

@@ -11,7 +11,7 @@ namespace IntegrationTest
         public TestCase(TestCaseConf conf)
         {
             mCaseConf = conf;
-            mName = Type.GetType(mCaseConf.Type).Name;
+            mName = conf.Name;
         }
 
         private string mName;
@@ -22,16 +22,17 @@ namespace IntegrationTest
 
         private IList<TestItem> mTestedItems = new List<TestItem>();
 
+        private List<TestItem> mErrorItems = new List<TestItem>();
+
         private IList<SecondCounter> mSecondHistory = new List<SecondCounter>();
 
         protected void NextTestItem()
         {
-            int tick = new Random().Next() % 20 * CaseConf.Sleep;
+            int tick = new Random().Next() % 5 * CaseConf.Sleep;
             if (tick == 0)
                 tick = CaseConf.Sleep;
             System.Threading.Thread.Sleep(tick);
         }
-
 
         private Queue<IList<TestItem>> GetTestItems()
         {
@@ -40,15 +41,17 @@ namespace IntegrationTest
             IList<TestItem> tests;
             Type type = Type.GetType(CaseConf.Type);
             int length = 0;
+            TestItem.DataBinder db = new TestItem.DataBinder(type, CaseConf.Params);
             while (count > 0)
             {
                 tests = new List<TestItem>();
-                int utils = (int)(new Random().Next() % 20) * CaseConf.Units;
+                int utils = (int)(new Random((int)(DateTime.Now.Ticks<<32>>32)) .Next() % 5) * CaseConf.Units;
                 if (utils == 0)
                     utils = CaseConf.Units;
                 while (utils > 0 && count > 0)
                 {
                     TestItem item = (TestItem)Activator.CreateInstance(type);
+                    db.Bind(item);
                     tests.Add(item);
                     count--;
                     utils--;
@@ -80,6 +83,26 @@ namespace IntegrationTest
         private DateTime mEndTime;
 
         private bool mIsCompleted = false;
+
+        private double mMinDelay = -1;
+
+        private double mMaxDelay = 0;
+
+        public double MinDelay
+        {
+            get
+            {
+                return mMinDelay;
+            }
+        }
+
+        public double MaxDelay
+        {
+            get
+            {
+                return mMaxDelay;
+            }
+        }
 
         private void OnExecute(object state)
         {
@@ -137,14 +160,22 @@ namespace IntegrationTest
         {
             lock (mTestedItems)
             {
-                TestedItems.Add(item);
+                if (mMinDelay == -1 || item.UserTime < mMinDelay)
+                {
+                    mMinDelay = item.UserTime;
+                }
+                if (item.UserTime > mMaxDelay)
+                    mMaxDelay = item.UserTime;
+                
                 System.Threading.Interlocked.Increment(ref mTestCount);
                 if (item.LastError != null)
                 {
+                    ErrorItems.Add(item);
                     System.Threading.Interlocked.Increment(ref mErrors);
                 }
                 else
                 {
+                    TestedItems.Add(item);  
                     System.Threading.Interlocked.Increment(ref mCompeteds);
                 }
             }
@@ -160,7 +191,9 @@ namespace IntegrationTest
             if (mInvokeHandler == null)
                 mInvokeHandler = new InvokeHandler(CaseConf.Count, Completed, CaseConf.MaxThread);
             mStart = true;
+            mMinDelay = -1;
             TestedItems.Clear();
+            ErrorItems.Clear();
             SecondHistory.Clear();
             mTestCount = 0;
             mLastTestCount = 0;
@@ -203,6 +236,14 @@ namespace IntegrationTest
             }
         }
 
+        public List<TestItem> ErrorItems
+        {
+            get
+            {
+                return mErrorItems;
+            }
+        }           
+
         public IList<TestItem> TestedItems
         {
             get
@@ -242,7 +283,6 @@ namespace IntegrationTest
             return result;
         }
 
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -269,18 +309,22 @@ namespace IntegrationTest
                 sb.AppendFormat("{0}{1}\r\n", GetName("当前时间"), DateTime.Now);
             }
             sb.AppendFormat("{0}{1}\r\n", GetName("测试线程数"), mCaseConf.MaxThread);
-            sb.AppendFormat("{0}{1}-{2}毫秒\r\n", GetName("间隔测试时间"), mCaseConf.Sleep, mCaseConf.Sleep * 20);
-            sb.AppendFormat("{0}{1}-{2}\r\n", GetName("测试并发区间"), mCaseConf.Units, mCaseConf.Units * 20);
+            sb.AppendFormat("{0}{1}-{2}毫秒\r\n", GetName("间隔测试时间"), mCaseConf.Sleep, mCaseConf.Sleep * 5);
+            sb.AppendFormat("{0}{1}-{2}\r\n", GetName("测试并发区间"), mCaseConf.Units, mCaseConf.Units * 5);
             sb.AppendFormat("{0}{1}\r\n", GetName("完成情况"), mCompeteds + mErrors);
             sb.AppendFormat("{0}{1}\r\n", GetName("成功"), mCompeteds);
             sb.AppendFormat("{0}{1}\r\n", GetName("失败"), mErrors);
             if (mIsCompleted)
             {
+                sb.AppendFormat("{0}{1:#####.##}/s\r\n", GetName("平均秒请求数"), ((double)mTestCount / (double)(mEndTime - mStartTime).TotalSeconds));
+                sb.AppendFormat("{0}{1:#####.##}/ms\r\n", GetName("最大耗时"), MaxDelay);
+                sb.AppendFormat("{0}{1:#####.##}/ms\r\n", GetName("最小耗时"), MinDelay);
                 sb.AppendFormat("{0}\r\n", GetName("汇总"));
                 foreach (TestCounterConf item in CollectInfo.Counters)
                 {
                     sb.AppendFormat("{0}{1}\r\n", GetName(item.Name), item.Count);
                 }
+               
             }
             else
             {

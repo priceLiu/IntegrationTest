@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CN100.EnterprisePlatform.Utility;
 
 namespace IntegrationTest
 {
@@ -16,8 +17,7 @@ namespace IntegrationTest
 
         private void OnTestCompleted(TestCase value)
         {
-
-
+            Log4NetUtil.Instance.Info(value.ToString());
         }
 
         private List<TestCase> mCases = new List<TestCase>();

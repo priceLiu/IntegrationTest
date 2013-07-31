@@ -37,7 +37,7 @@
             <externalTypeMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/Int32" />
           </type>
         </attributeProperty>
-        <attributeProperty name="Type" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="type" isReadOnly="false">
+        <attributeProperty name="Type" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="type" isReadOnly="false">
           <type>
             <externalTypeMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/String" />
           </type>
@@ -52,11 +52,21 @@
             <externalTypeMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/Int32" />
           </type>
         </attributeProperty>
+        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/String" />
+          </type>
+        </attributeProperty>
       </attributeProperties>
       <elementProperties>
         <elementProperty name="Counters" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="counters" isReadOnly="false">
           <type>
             <configurationElementCollectionMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/TestCounterConfCollection" />
+          </type>
+        </elementProperty>
+        <elementProperty name="Params" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="params" isReadOnly="false">
+          <type>
+            <configurationElementCollectionMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/ParamCollection" />
           </type>
         </elementProperty>
       </elementProperties>
@@ -95,6 +105,25 @@
         <configurationElementMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/TestCounterConf" />
       </itemType>
     </configurationElementCollection>
+    <configurationElementCollection name="ParamCollection" xmlItemName="param" codeGenOptions="Indexer, AddMethod, RemoveMethod, GetItemMethods">
+      <itemType>
+        <configurationElementMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/Param" />
+      </itemType>
+    </configurationElementCollection>
+    <configurationElement name="Param">
+      <attributeProperties>
+        <attributeProperty name="Name" isRequired="true" isKey="true" isDefaultCollection="false" xmlName="name" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/String" />
+          </type>
+        </attributeProperty>
+        <attributeProperty name="Value" isRequired="false" isKey="false" isDefaultCollection="false" xmlName="value" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/922e63f4-c0b6-4ac8-9884-86948aee941a/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationElement>
   </configurationElements>
   <propertyValidators>
     <validators />

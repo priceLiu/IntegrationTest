@@ -13,11 +13,11 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\X86\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,8 +32,50 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CN100.EnterprisePlatform.Configuration">
+      <HintPath>..\DLL\CN100.EnterprisePlatform.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.EnterprisePlatform.Utility">
+      <HintPath>..\DLL\CN100.EnterprisePlatform.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.EnterprisePlatform.Wcf.Core">
+      <HintPath>..\DLL\CN100.EnterprisePlatform.Wcf.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.EnterprisePlatform.Wcf.Core.Config">
+      <HintPath>..\DLL\CN100.EnterprisePlatform.Wcf.Core.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.Member.BLL">
+      <HintPath>..\DLL\CN100.Member.BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.Member.DAL">
+      <HintPath>..\DLL\CN100.Member.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.Member.Enums">
+      <HintPath>..\DLL\CN100.Member.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.Member.IBLL">
+      <HintPath>..\DLL\CN100.Member.IBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.Orders.BLL.Model">
+      <HintPath>..\DLL\CN100.Orders.BLL.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.Orders.IBLL">
+      <HintPath>..\DLL\CN100.Orders.IBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.Orders.Utility">
+      <HintPath>..\DLL\CN100.Orders.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="CN100.Orders.ViewModel">
+      <HintPath>..\DLL\CN100.Orders.ViewModel.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\DLL\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,18 +83,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartModel.cs" />
+    <Compile Include="DataHelper.cs" />
+    <Compile Include="LoginTest.cs" />
+    <Compile Include="OrderListTest.cs" />
+    <Compile Include="OrdersTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestDemo.cs" />
+    <Compile Include="RegisterTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IntegrationTest\IntegrationTest.csproj">
       <Project>{9aa75eec-982e-41e8-a531-1eceffe5188d}</Project>
       <Name>IntegrationTest</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cm100.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="search.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="product.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

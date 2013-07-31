@@ -212,7 +212,7 @@ namespace IntegrationTest
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         [global::System.ComponentModel.DescriptionAttribute("The Type.")]
-        [global::System.Configuration.ConfigurationPropertyAttribute(global::IntegrationTest.TestCaseConf.TypePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::IntegrationTest.TestCaseConf.TypePropertyName, IsRequired=true, IsKey=false, IsDefaultCollection=false)]
         public virtual string Type
         {
             get
@@ -278,6 +278,32 @@ namespace IntegrationTest
         }
         #endregion
         
+        #region Name Property
+        /// <summary>
+        /// The XML name of the <see cref="Name"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string NamePropertyName = "name";
+        
+        /// <summary>
+        /// Gets or sets the Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Name.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::IntegrationTest.TestCaseConf.NamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public virtual string Name
+        {
+            get
+            {
+                return ((string)(base[global::IntegrationTest.TestCaseConf.NamePropertyName]));
+            }
+            set
+            {
+                base[global::IntegrationTest.TestCaseConf.NamePropertyName] = value;
+            }
+        }
+        #endregion
+        
         #region Counters Property
         /// <summary>
         /// The XML name of the <see cref="Counters"/> property.
@@ -300,6 +326,32 @@ namespace IntegrationTest
             set
             {
                 base[global::IntegrationTest.TestCaseConf.CountersPropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Params Property
+        /// <summary>
+        /// The XML name of the <see cref="Params"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string ParamsPropertyName = "params";
+        
+        /// <summary>
+        /// Gets or sets the Params.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Params.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::IntegrationTest.TestCaseConf.ParamsPropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual global::IntegrationTest.ParamCollection Params
+        {
+            get
+            {
+                return ((global::IntegrationTest.ParamCollection)(base[global::IntegrationTest.TestCaseConf.ParamsPropertyName]));
+            }
+            set
+            {
+                base[global::IntegrationTest.TestCaseConf.ParamsPropertyName] = value;
             }
         }
         #endregion
@@ -373,7 +425,7 @@ namespace IntegrationTest
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
         protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
         {
-            return ((global::IntegrationTest.TestCaseConf)(element)).Type;
+            return ((global::IntegrationTest.TestCaseConf)(element)).Name;
         }
         
         /// <summary>
@@ -406,13 +458,13 @@ namespace IntegrationTest
         /// <summary>
         /// Gets the <see cref="global::IntegrationTest.TestCaseConf"/> with the specified key.
         /// </summary>
-        /// <param name="type">The key of the <see cref="global::IntegrationTest.TestCaseConf"/> to retrieve.</param>
+        /// <param name="name">The key of the <see cref="global::IntegrationTest.TestCaseConf"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public global::IntegrationTest.TestCaseConf this[object type]
+        public global::IntegrationTest.TestCaseConf this[object name]
         {
             get
             {
-                return ((global::IntegrationTest.TestCaseConf)(base.BaseGet(type)));
+                return ((global::IntegrationTest.TestCaseConf)(base.BaseGet(name)));
             }
         }
         #endregion
@@ -455,11 +507,11 @@ namespace IntegrationTest
         /// <summary>
         /// Gets the <see cref="global::IntegrationTest.TestCaseConf"/> with the specified key.
         /// </summary>
-        /// <param name="type">The key of the <see cref="global::IntegrationTest.TestCaseConf"/> to retrieve.</param>
+        /// <param name="name">The key of the <see cref="global::IntegrationTest.TestCaseConf"/> to retrieve.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
-        public global::IntegrationTest.TestCaseConf GetItemByKey(string type)
+        public global::IntegrationTest.TestCaseConf GetItemByKey(string name)
         {
-            return ((global::IntegrationTest.TestCaseConf)(base.BaseGet(((object)(type)))));
+            return ((global::IntegrationTest.TestCaseConf)(base.BaseGet(((object)(name)))));
         }
         #endregion
         
@@ -767,6 +819,250 @@ namespace IntegrationTest
         public override bool IsReadOnly()
         {
             return false;
+        }
+        #endregion
+    }
+}
+namespace IntegrationTest
+{
+    
+    
+    /// <summary>
+    /// A collection of Param instances.
+    /// </summary>
+    [global::System.Configuration.ConfigurationCollectionAttribute(typeof(global::IntegrationTest.Param), CollectionType=global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate, AddItemName=global::IntegrationTest.ParamCollection.ParamPropertyName)]
+    public partial class ParamCollection : global::System.Configuration.ConfigurationElementCollection
+    {
+        
+        #region Constants
+        /// <summary>
+        /// The XML name of the individual <see cref="global::IntegrationTest.Param"/> instances in this collection.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string ParamPropertyName = "param";
+        #endregion
+        
+        #region Overrides
+        /// <summary>
+        /// Gets the type of the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <returns>The <see cref="global::System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override global::System.Configuration.ConfigurationElementCollectionType CollectionType
+        {
+            get
+            {
+                return global::System.Configuration.ConfigurationElementCollectionType.BasicMapAlternate;
+            }
+        }
+        
+        /// <summary>
+        /// Gets the name used to identify this collection of elements
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override string ElementName
+        {
+            get
+            {
+                return global::IntegrationTest.ParamCollection.ParamPropertyName;
+            }
+        }
+        
+        /// <summary>
+        /// Indicates whether the specified <see cref="global::System.Configuration.ConfigurationElement"/> exists in the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="elementName">The name of the element to verify.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override bool IsElementName(string elementName)
+        {
+            return (elementName == global::IntegrationTest.ParamCollection.ParamPropertyName);
+        }
+        
+        /// <summary>
+        /// Gets the element key for the specified configuration element.
+        /// </summary>
+        /// <param name="element">The <see cref="global::System.Configuration.ConfigurationElement"/> to return the key for.</param>
+        /// <returns>
+        /// An <see cref="object"/> that acts as the key for the specified <see cref="global::System.Configuration.ConfigurationElement"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override object GetElementKey(global::System.Configuration.ConfigurationElement element)
+        {
+            return ((global::IntegrationTest.Param)(element)).Name;
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="global::IntegrationTest.Param"/>.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="global::IntegrationTest.Param"/>.
+        /// </returns>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        protected override global::System.Configuration.ConfigurationElement CreateNewElement()
+        {
+            return new global::IntegrationTest.Param();
+        }
+        #endregion
+        
+        #region Indexer
+        /// <summary>
+        /// Gets the <see cref="global::IntegrationTest.Param"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::IntegrationTest.Param"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::IntegrationTest.Param this[int index]
+        {
+            get
+            {
+                return ((global::IntegrationTest.Param)(base.BaseGet(index)));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::IntegrationTest.Param"/> with the specified key.
+        /// </summary>
+        /// <param name="name">The key of the <see cref="global::IntegrationTest.Param"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::IntegrationTest.Param this[object name]
+        {
+            get
+            {
+                return ((global::IntegrationTest.Param)(base.BaseGet(name)));
+            }
+        }
+        #endregion
+        
+        #region Add
+        /// <summary>
+        /// Adds the specified <see cref="global::IntegrationTest.Param"/> to the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="param">The <see cref="global::IntegrationTest.Param"/> to add.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public void Add(global::IntegrationTest.Param param)
+        {
+            base.BaseAdd(param);
+        }
+        #endregion
+        
+        #region Remove
+        /// <summary>
+        /// Removes the specified <see cref="global::IntegrationTest.Param"/> from the <see cref="global::System.Configuration.ConfigurationElementCollection"/>.
+        /// </summary>
+        /// <param name="param">The <see cref="global::IntegrationTest.Param"/> to remove.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public void Remove(global::IntegrationTest.Param param)
+        {
+            base.BaseRemove(this.GetElementKey(param));
+        }
+        #endregion
+        
+        #region GetItem
+        /// <summary>
+        /// Gets the <see cref="global::IntegrationTest.Param"/> at the specified index.
+        /// </summary>
+        /// <param name="index">The index of the <see cref="global::IntegrationTest.Param"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::IntegrationTest.Param GetItemAt(int index)
+        {
+            return ((global::IntegrationTest.Param)(base.BaseGet(index)));
+        }
+        
+        /// <summary>
+        /// Gets the <see cref="global::IntegrationTest.Param"/> with the specified key.
+        /// </summary>
+        /// <param name="name">The key of the <see cref="global::IntegrationTest.Param"/> to retrieve.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public global::IntegrationTest.Param GetItemByKey(string name)
+        {
+            return ((global::IntegrationTest.Param)(base.BaseGet(((object)(name)))));
+        }
+        #endregion
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+    }
+}
+namespace IntegrationTest
+{
+    
+    
+    /// <summary>
+    /// The Param Configuration Element.
+    /// </summary>
+    public partial class Param : global::System.Configuration.ConfigurationElement
+    {
+        
+        #region IsReadOnly override
+        /// <summary>
+        /// Gets a value indicating whether the element is read-only.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        public override bool IsReadOnly()
+        {
+            return false;
+        }
+        #endregion
+        
+        #region Name Property
+        /// <summary>
+        /// The XML name of the <see cref="Name"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string NamePropertyName = "name";
+        
+        /// <summary>
+        /// Gets or sets the Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Name.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::IntegrationTest.Param.NamePropertyName, IsRequired=true, IsKey=true, IsDefaultCollection=false)]
+        public virtual string Name
+        {
+            get
+            {
+                return ((string)(base[global::IntegrationTest.Param.NamePropertyName]));
+            }
+            set
+            {
+                base[global::IntegrationTest.Param.NamePropertyName] = value;
+            }
+        }
+        #endregion
+        
+        #region Value Property
+        /// <summary>
+        /// The XML name of the <see cref="Value"/> property.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        internal const string ValuePropertyName = "value";
+        
+        /// <summary>
+        /// Gets or sets the Value.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.0")]
+        [global::System.ComponentModel.DescriptionAttribute("The Value.")]
+        [global::System.Configuration.ConfigurationPropertyAttribute(global::IntegrationTest.Param.ValuePropertyName, IsRequired=false, IsKey=false, IsDefaultCollection=false)]
+        public virtual string Value
+        {
+            get
+            {
+                return ((string)(base[global::IntegrationTest.Param.ValuePropertyName]));
+            }
+            set
+            {
+                base[global::IntegrationTest.Param.ValuePropertyName] = value;
+            }
         }
         #endregion
     }
